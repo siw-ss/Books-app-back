@@ -30,4 +30,12 @@ public class BookService {
         }
         bookRepository.save(book);
     }
+
+    public void deleteBook(Long bookId) {
+        boolean exists = bookRepository.existsById(bookId);
+        if(!exists){
+            throw new IllegalStateException("Book with id"+ bookId+"does not exist");
+        }
+        bookRepository.deleteById(bookId);
+    }
 }
