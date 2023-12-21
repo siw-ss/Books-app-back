@@ -29,4 +29,13 @@ public class BookController {
     public void deleteBook(@PathVariable("bookId") Long bookId){
         bookService.deleteBook(bookId);
     }
+
+    @PutMapping(path = "{bookId}")
+    public void updateBook(
+            @PathVariable("bookId") Long bookId,
+            @RequestParam(required = false) String title,
+            @RequestParam(required = false) Integer price
+    ){
+        bookService.updateBook(bookId,title,price);
+    }
 }
