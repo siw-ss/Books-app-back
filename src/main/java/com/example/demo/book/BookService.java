@@ -2,6 +2,7 @@ package com.example.demo.book;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -15,11 +16,8 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
+    @GetMapping
     public List<Book> getBooks(){
         return bookRepository.findAll();
-//        return List.of(
-//            new Book(1,"fault in our stars",200),
-//            new Book(2,"dolphins",50)
-//        );
     }
 }

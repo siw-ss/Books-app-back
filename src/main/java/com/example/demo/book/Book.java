@@ -20,6 +20,9 @@ public class Book {
     private String title;
     private Integer price;
 
+    public Book() {
+    }
+
     public Book(long id, String title, Integer price) {
         this.id = id;
         this.title = title;
