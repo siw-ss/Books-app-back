@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookService {
@@ -19,5 +20,14 @@ public class BookService {
     @GetMapping
     public List<Book> getBooks(){
         return bookRepository.findAll();
+    }
+
+    public void addNewBook(Book book) {
+        Optional<Book> studentOptional = bookRepository
+                .findByTitle(book.getTitle());
+        if(studentOptional.isPresent()){
+            throw new IllegalStateException("book already exists");
+        }
+        bookRepository.save(book);
     }
 }
